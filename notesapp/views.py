@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render,redirect
 from .models import Notes
 
 # Create your views here.
@@ -24,6 +24,7 @@ def main(request):
 
     if noteid > 0:
         note = Notes.objects.get(pk=noteid)
+        return redirect('/')
     else:
         note = ''
         return render(request,'main.html',{'notes': notes, 'note': note,'noteid':noteid})
