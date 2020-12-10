@@ -5,15 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>App4Notes</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    
+      
     </head>
-
-    <body>
-        <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+  <body>
 <nav class="navbar is-dark">
     <div class="navbar-brand">
         <a href="{% url 'home' %}" class="navbar-item">Notes</a>
@@ -25,14 +20,15 @@
         </div>
     </div>
 </nav>
-</body>
-</html>
-    
+
+
+<h1 style =text-align:center;font-size:40px><strong>App4Notes</strong></h1>
+
         <section class="section">
             <div class="columns">
                 <div class="column is-2">
                     <aside class="menu">
-                        <p class="menu-label"><strong>Notes</strong></p>
+                        <p class="menu-label"  style =font-size:22px><strong>Notes</strong></p>
 
                         <ul class="menu-list">
                             {% for not in notes %}
@@ -47,12 +43,11 @@
                 <div class="column is-10">
                     <form method="post" action="{% url 'home' %}">
                         {% csrf_token %}
-
                         <input type="hidden" name="noteid" value="{{ noteid }}">
 
                         <div class="field">
-                            <label class="label">
-                                 Note Title
+                            <label class="label" style =font-size:22px>
+                                Title
                                 {% if note %}
                                     <span class="has-text-grey-light">
                                         Created at: {{ note.created|date:"m/d Y" }} / 
@@ -67,7 +62,7 @@
                         </div>
 
                         <div class="field">
-                            <label class="label">Add Note</label>
+                            <label class="label"  style =font-size:22px>Add Note</label>
 
                             <div class="control">
                                 <textarea class="textarea" name="content" placeholder="Content">{% if note %}{{ note.content }}{% endif %}</textarea>
