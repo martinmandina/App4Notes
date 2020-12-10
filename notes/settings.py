@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap3',
     'notesapp',
+    'rest_framework',
+    'knox',
 ]
 
 MIDDLEWARE = [
