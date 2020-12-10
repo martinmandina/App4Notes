@@ -63,7 +63,7 @@ class NoteList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-
+ 
 class Notesingle(APIView):
     # permission_classes = (IsAdminOrReadOnly,)
     def get_note(self, pk):

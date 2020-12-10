@@ -48,12 +48,7 @@
                         <div class="field">
                             <label class="label" style =font-size:22px>
                                 Title
-                                {% if note %}
-                                    <span class="has-text-grey-light">
-                                        Created at: {{ note.created_at|date:"m/d Y" }} or
-                                        Modified at: {{ note.modified_at|date:"m/d Y" }}
-                                    </span>
-                                {% endif %}
+                                
                             </label>
 
                             <div class="control">
@@ -68,11 +63,17 @@
                                 <textarea class="textarea" name="content" placeholder="Content">{% if note %}{{ note.content }}{% endif %}</textarea>
                             </div>
                         </div>
-
+                        {% if note %}
+                        <span class="has-text-blue-light">
+                            Created at: {{ note.created_at|date:"m/d Y" }}<br>
+                            Modified at: {{ note.modified_at|date:"m/d Y" }}
+                        </span>
+                    {% endif %}<br><br>
                         <div class="field is-grouped">
                             <div class="control">
                                 <button class="button is-primary">Save</button>
                             </div>
+                            
                             {% if note %}
                                 <div class="control">
                                     <a href="{% url 'note_delete' note.id %}" class="button is-danger">Delete</a>
