@@ -13,7 +13,7 @@ def main(request):
         content = request.POST.get('content', '')
 
         if noteid > 0:
-            note = Document.objects.get(pk=noteid)
+            note = Notes.objects.get(pk=noteid)
             note.title = title
             note.content = content
             note.save()
