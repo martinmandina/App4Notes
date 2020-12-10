@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Notes
 
+
 # Create your views here.
 
 def main(request):
