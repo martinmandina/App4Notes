@@ -7,7 +7,7 @@ from django.urls import path, re_path
 urlpatterns = [
     path('',views.main, name='home'),
     path('note_delete/<int:noteid>/', views.delete_note, name='note_delete'),
-
+    path('api/noteall/', views.NoteList.as_view(), name='notes') 
 ]
 
 if settings.DEBUG:

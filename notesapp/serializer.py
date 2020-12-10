@@ -3,14 +3,13 @@ from django.contrib.auth.models import User
 from .models import Notes
 
 
-# User Serializer
-
+# Note Serializer
 class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notes
         fields = (('id','title','content', 'created_at','modified_at'))
 
-
+# User Serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -25,5 +24,4 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
-
         return user

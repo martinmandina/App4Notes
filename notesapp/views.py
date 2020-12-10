@@ -1,5 +1,10 @@
 from django.shortcuts import render,redirect
 from .models import Notes
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import Notes
+from .serializer import NoteSerializer
+
 
 
 # Create your views here.
@@ -42,3 +47,17 @@ def delete_note(request, noteid):
     note.delete()
 
     return redirect('/?noteid=0')
+
+class NoteList(APIView):
+    # permission_classes = (IsAdminOrReadOnly,)
+    def get(self, request, format=None):
+        all_notes = Notes.objects.all()
+        serializers = NoteSerializer(all_notes, many=True)
+        return Response(serializers.data)
+
+    def post(self, request, format=None):
+        serializers = NoteSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
