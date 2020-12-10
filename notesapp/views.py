@@ -24,10 +24,17 @@ def main(request):
 
     if noteid > 0:
         note = Notes.objects.get(pk=noteid)
-        return redirect('/')
+        # return redirect('/noteid')
     else:
         note = ''
-        return render(request,'main.html',{'notes': notes, 'note': note,'noteid':noteid})
+
+    context = {
+        'noteid': noteid,
+        'notes': notes,
+        'note': note
+    }
+
+    return render(request,'main.html',context)
 
 def delete_note(request, noteid):
     note = Notes.objects.get(pk=noteid)

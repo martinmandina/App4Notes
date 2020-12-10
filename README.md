@@ -1,6 +1,6 @@
 # App4Notes
 #### Live-Link
-
+''
 
 ### Description:
 A Django Notes application which essentially saves notes and retrieves them for a user at a go.
